@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Favori Filmlerim</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css"
+        integrity="sha512-+4zCK9k+qNFUR5X+cKL9EIR+ZOhtIloNl9GIKS57V1MyNsYpYcUrUeQc9vNfzsWfV28IaLL3i96P9sdNyeRssA=="
+        crossorigin="anonymous" />
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Langar&family=Montserrat:wght@300;400;500;700;900&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+    <header>
+        <nav class="navbar">
+            <span class="heading">Favorı Fılmlerim</span>
+        </nav>
+    </header>
+
+    <section class="form-section">
+        <div class="container">
+            <form class="form" id="form">
+                <label for="movieName">Film İsmini Giriniz:</label>
+                <input type="text" id="movieName">
+                <label for="directorName">Yönetmen Adını Giriniz:</label>
+                <input type="text" id="directorName">
+                <label for="bannerUrl">Afiş Linkini Giriniz</label>
+                <input type="text" id="bannerUrl">
+                <button class="btn btn-submit" type="submit">Film Ekle</button>
+            </form>
+        </div>
+    </section>
+
+    <section class="section-movies">
+        <h1>Filmler</h1>
+        <div class="movie-cards">
+
+        </div>
+        <button class="btn btn-delete btn-delete-all">Tüm Filmleri Temizle</button>
+    </section>
+
+
+    <footer class="footer">
+        <div>
+            <p>Gökhan Özdemir</p>
+
+        </div>
+    </footer>
+
+    <script src="ui.js"></script>
+    <script src="storage.js"></script>
+    <script src="movie.js"></script>
+    <script src="app.js"></script>
+</body>
+
+</html>
