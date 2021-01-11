@@ -5,11 +5,6 @@ const bannerUrlElement = document.querySelector('#bannerUrl');
 const movieCards = document.querySelector('.movie-cards');
 const clearAllButton = document.querySelector('.btn-delete-all');
 
-//Initializing UI Object
-const ui = new UI();
-
-//Initializing Storage Object
-const storage = new Storage();
 
 //Triggering All Events
 eventListeners();
@@ -17,8 +12,8 @@ eventListeners();
 function eventListeners() {
     formElement.addEventListener('submit', addMovie);
     document.addEventListener('DOMContentLoaded', () => {
-        let movies = storage.getMoviesFromStorage();
-        ui.loadAllMoviesToUi(movies);
+        let movies = Storage.getMoviesFromStorage();
+        UI.loadAllMoviesToUi(movies);
     });
     movieCards.addEventListener('click', deleteAll);
     clearAllButton.addEventListener('click', clearAllMovies);
@@ -33,31 +28,31 @@ function addMovie(e) {
     const bannerUrl = bannerUrlElement.value;
 
     if (movieName === "" || movieDirector === "" || bannerUrl === "") {
-        ui.displayMessage('Tüm alanları doldurun!', 'danger');
+        UI.displayMessage('Tüm alanları doldurun!', 'danger');
     } else {
         const newMovie = new Movie(movieName, movieDirector, bannerUrl);
 
-        ui.addMovieToUi(newMovie);
-        storage.addMovieToStorage(newMovie);
-        ui.clearInputs(movieNameElement, movieDirectorElement, bannerUrlElement);
-        ui.displayMessage('Film başarıyla eklendi', 'success');
+        UI.addMovieToUi(newMovie);
+        Storage.addMovieToStorage(newMovie);
+        UI.clearInputs(movieNameElement, movieDirectorElement, bannerUrlElement);
+        UI.displayMessage('Film başarıyla eklendi', 'success');
     }
 }
 
 function deleteAll(e) {
 
     if (e.target.classList.contains('btn-delete')) {
-        ui.deleteMovieFromUi(e.target);
-        storage.deleteMovieFromStorage(e.target.parentElement.previousElementSibling.previousElementSibling.children[0].textContent);
-        ui.displayMessage('Silme işlemi başarılı', 'success');
+        UI.deleteMovieFromUi(e.target);
+        Storage.deleteMovieFromStorage(e.target.parentElement.previousElementSibling.previousElementSibling.children[0].textContent);
+        UI.displayMessage('Silme işlemi başarılı', 'success');
     }
 
 }
 
 function clearAllMovies(e) {
     if (confirm('Emin misiniz?')) {
-        ui.clearAllMoviesFromUi();
-        storage.clearAllMoviesFromStorage();
+        UI.clearAllMoviesFromUi();
+        Storage.clearAllMoviesFromStorage();
     }
 
 }

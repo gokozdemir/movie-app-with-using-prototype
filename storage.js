@@ -1,41 +1,39 @@
-function Storage(){
-
-}
-
-Storage.prototype.addMovieToStorage = function(newMovie){
-    let movies = this.getMoviesFromStorage();
-
-    movies.push(newMovie);
-
-    localStorage.setItem('movies', JSON.stringify(movies));
-
+class Storage{
+    static addMovieToStorage(newMovie){
+        let movies = this.getMoviesFromStorage();
     
-}
-
-Storage.prototype.getMoviesFromStorage = function() {
-    let movies;
-
-    if(localStorage.getItem('movies') === null){
-        movies = [];
-    }else{
-        movies = JSON.parse(localStorage.getItem('movies'));
+        movies.push(newMovie);
+    
+        localStorage.setItem('movies', JSON.stringify(movies));
+    
+        
     }
-
-    return movies;
-}
-
-Storage.prototype.deleteMovieFromStorage = function(movieName){
-    let movies = this.getMoviesFromStorage();
-
-    movies.forEach(function(movie, index){
-        if(movie.name === movieName){
-            movies.splice(index, 1);
+    
+    static getMoviesFromStorage() {
+        let movies;
+    
+        if(localStorage.getItem('movies') === null){
+            movies = [];
+        }else{
+            movies = JSON.parse(localStorage.getItem('movies'));
         }
-    })
-
-    localStorage.setItem('movies', JSON.stringify(movies));
-}
-
-Storage.prototype.clearAllMoviesFromStorage = function(){
-    localStorage.removeItem('movies');
+    
+        return movies;
+    }
+    
+    static deleteMovieFromStorage(movieName){
+        let movies = this.getMoviesFromStorage();
+    
+        movies.forEach(function(movie, index){
+            if(movie.name === movieName){
+                movies.splice(index, 1);
+            }
+        })
+    
+        localStorage.setItem('movies', JSON.stringify(movies));
+    }
+    
+    static clearAllMoviesFromStorage(){
+        localStorage.removeItem('movies');
+    }
 }
